@@ -9,7 +9,7 @@ namespace OOPeksamen2.StregSystemClasses
 {
     class User : IComparable
     {
-        public User(ulong userID, string username, string firstname, string lastname, string email)
+        public User(uint userID, string username, string firstname, string lastname, string email)
         {
             UserID = userID;
             FirstName = CheckNullOrEmpty(firstname);
@@ -17,13 +17,14 @@ namespace OOPeksamen2.StregSystemClasses
             Username = SetUserName(CheckNullOrEmpty(username));
             EMail = SetEmail(CheckNullOrEmpty(email));
             Balance = 0;
+            
         }
-        ulong UserID { get; protected set; }
+        uint UserID { get; protected set; }
         string Username { get; protected set; }
         string FirstName { get; protected set; }
         string LastName { get; protected set; }
         string EMail { get; protected set; }
-        double Balance { get; private set; }
+        uint Balance { get; private set; }
 
         #region CheckNullOrEmpty
         private string CheckNullOrEmpty(string name)
@@ -54,6 +55,23 @@ namespace OOPeksamen2.StregSystemClasses
                 throw new ArgumentException("Only alphanumeric characters may be used");
         }
         #endregion
+      
+        #region Saldo interactions
+        public uint Saldoforespørgelse() { return Balance; }
+
+        public uint AddToSaldo(uint Beløb)
+        {
+            Balance += Beløb;
+            return Balance;
+        }
+        #endregion
+
+        public override string ToString()
+        {
+            return FirstName + ' ' + LastName + ' ' + EMail;
+        }
+
+        
 
     }
 }
