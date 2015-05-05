@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace OOPeksamen2.StregSystemClasses
+namespace OOPeksamen2
 {
     class User : IComparable
     {
@@ -19,12 +19,12 @@ namespace OOPeksamen2.StregSystemClasses
             Balance = 0;
             
         }
-        uint UserID { get; private set; }
-        string Username { get; private set; }
-        string FirstName { get; private set; }
-        string LastName { get; private set; }
-        string EMail { get; private set; }
-        uint Balance { get; private set; }
+        public uint UserID { get; private set; }
+        public string Username { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string EMail { get; private set; }
+        public uint Balance { get; private set; }
         #region Setters
         #region CheckNullOrEmpty
         private string CheckNullOrEmpty(string name)
