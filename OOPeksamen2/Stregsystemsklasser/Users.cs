@@ -25,7 +25,7 @@ namespace OOPeksamen2.StregSystemClasses
         string LastName { get; private set; }
         string EMail { get; private set; }
         uint Balance { get; private set; }
-
+        #region Setters
         #region CheckNullOrEmpty
         private string CheckNullOrEmpty(string name)
         {
@@ -55,13 +55,19 @@ namespace OOPeksamen2.StregSystemClasses
                 throw new ArgumentException("Only alphanumeric characters may be used");
         }
         #endregion
-      
+        #endregion
         #region Saldo interactions
         public uint Saldoforespørgelse() { return Balance; }
 
         public uint AddToSaldo(uint Beløb)
         {
             Balance += Beløb;
+            return Balance;
+        }
+
+        public uint SubtractSaldo(uint Beløb)
+        {
+            Balance -= Beløb;
             return Balance;
         }
         #endregion
