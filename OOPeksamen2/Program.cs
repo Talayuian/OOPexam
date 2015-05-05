@@ -10,8 +10,8 @@ namespace OOPeksamen2
     {
         static void Main(string[] args)
         {
-            User bo = new User(0415, "bopus", "Bo", "Larsen", "Dani_9220@hotmail.com");
-            Console.WriteLine(bo.ToString);
+            User bo = new User(415, "bopus", "Bo", "Larsen", "Bopus_8295-e@Joachim.sneft_rup-blargh.com");
+            Console.WriteLine(bo.EMail);
             Console.ReadKey();
         }
     }

@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace OOPeksamen2
 {
-    class User : IComparable
+    class User //: IComparable
     {
         public User(uint userID, string username, string firstname, string lastname, string email)
         {
@@ -16,7 +16,7 @@ namespace OOPeksamen2
             LastName = CheckNullOrEmpty(lastname);
             Username = SetUserName(CheckNullOrEmpty(username));
             EMail = SetEmail(CheckNullOrEmpty(email));
-            Balance = 0;
+            Balance = 1;
             
         }
         public uint UserID { get; private set; }
@@ -38,7 +38,7 @@ namespace OOPeksamen2
         #region Set E-Mail
         private string SetEmail(string mail)
         {
-            Regex Mail = new Regex("^[a-zA-Z0-9_.-]+)@([a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+).([a-zA-Z0-9]+)+$");
+            Regex Mail = new Regex("^([a-zA-Z0-9._-]+)@([a-zA-Z0-9]{1})([a-zA-Z0-9.-]+)([a-zA-Z0-9]{1}).([a-zA-Z0-9]+)");
             if (Mail.IsMatch(mail))
                 return mail;
             else
@@ -68,13 +68,16 @@ namespace OOPeksamen2
         public uint SubtractSaldo(uint Beløb)
         {
             Balance -= Beløb;
+            if (Balance < 50){
+                throw new ArgumentOutOfRangeException();
+            }
             return Balance;
         }
         #endregion
 
         public override string ToString()
         {
-            return FirstName + ' ' + LastName + ' ' + EMail;
+            return EMail;
         }
 
 
