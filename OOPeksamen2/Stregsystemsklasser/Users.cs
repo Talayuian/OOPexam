@@ -19,11 +19,11 @@ namespace OOPeksamen2.StregSystemClasses
             Balance = 0;
             
         }
-        uint UserID { get; protected set; }
-        string Username { get; protected set; }
-        string FirstName { get; protected set; }
-        string LastName { get; protected set; }
-        string EMail { get; protected set; }
+        uint UserID { get; private set; }
+        string Username { get; private set; }
+        string FirstName { get; private set; }
+        string LastName { get; private set; }
+        string EMail { get; private set; }
         uint Balance { get; private set; }
 
         #region CheckNullOrEmpty
