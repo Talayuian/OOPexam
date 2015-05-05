@@ -77,7 +77,12 @@ namespace OOPeksamen2.StregSystemClasses
             return FirstName + ' ' + LastName + ' ' + EMail;
         }
 
-        
 
+
+
+        public int CompareTo(User user)
+        {
+            return (int)(UserID - user.UserID);
+        }
     }
 }
