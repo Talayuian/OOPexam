@@ -23,8 +23,12 @@ namespace OOPeksamen2.Stregsystemsklasser.TransactionSubclasses
         {
             return "Produkt: "+Product.ProductName +" pris: "+Amount+" User Buying Product: "+User+" Tidspunkt: "+Date+" ID på Transaktion: "+TransactionID;
         }
-        public override void execute(int )
+        public override void execute()
         {
+            if (Amount > User.Balance)
+                throw new Exception();
+            else
+                User.SubtractSaldo((int)Amount);
             
         }
     }
