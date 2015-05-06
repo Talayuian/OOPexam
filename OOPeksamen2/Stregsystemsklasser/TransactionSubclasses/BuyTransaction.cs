@@ -14,7 +14,7 @@ namespace OOPeksamen2
             User = SetUser(user);
             Date = SetDate(date);
             Product = product;
-            Amount = product.Price;
+            Amount = (int) product.Price;
         }
         public Product Product { get; protected set; }
 
@@ -27,7 +27,7 @@ namespace OOPeksamen2
             if (Amount > User.Balance)
                 throw new InsufficientCreditsException();
             else
-                User.SubtractSaldo((int)Amount);
+                User.SubtractSaldo(Amount);
             
         }
     }
