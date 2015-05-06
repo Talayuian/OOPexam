@@ -1,15 +1,16 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace OOPeksamen2
 {
     class StringSystem
     {
-        StreamWriter File = new StreamWriter("Logfile.txt");
         Dictionary<uint, User> Users = new Dictionary<uint, User>();
         Dictionary<uint, Product> Products = new Dictionary<uint, Product>();
         Dictionary<uint, Transactions> Transactions = new Dictionary<uint, Transactions>();
@@ -31,7 +32,7 @@ namespace OOPeksamen2
             {
                 transaction.execute();
                 Transactions.Add((uint)Transactions.Count, transaction);
-                Logging(transaction);
+                Logging("Logfile.txt",transaction);
             }
             catch (Exception)
             {
@@ -76,9 +77,34 @@ namespace OOPeksamen2
                 throw new NoActiveProductsException("No Active Products added yet");
             return ActiveProductsList;
         }
-        public void Logging(Transactions print)
+        public void Logging(string Path,Transactions print)
         {
+            StreamWriter File = new StreamWriter(Path);
             File.WriteLine(print.ToString());
         }
+
+        public void SingleLineScanner(string line, Dictionary<uint, Product> Productdic)
+        {
+            string[] temp = line.Split(';');
+            uint id = 0;
+            uint.TryParse(temp[0],out id);
+            string name = temp[1];
+            uint price = 0;
+            uint.TryParse(temp[2],out price);
+            bool active= false;
+            if (temp[3] == "1")
+                active = true;
+            else if (temp[3] == "0")
+                active = false;
+            Productdic.Add(id,new Product(id, name, price, active));
+        }
+        public void ProductScanner(string FilePath, Dictionary<uint, Product> Productdic)
+        {
+            string[] lines = System.IO.File.ReadAllLines(FilePath);
+            foreach (string line in lines)
+            {
+                SingleLineScanner(line,Productdic);
+            }
+    }
     }
 }
