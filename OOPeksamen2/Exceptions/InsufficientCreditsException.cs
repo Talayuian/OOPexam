@@ -10,7 +10,6 @@ namespace OOPeksamen2
     {
         public InsufficientCreditsException()
         {
-            
         }
         public InsufficientCreditsException(string message):base(message)
         {
