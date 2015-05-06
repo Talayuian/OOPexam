@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace OOPeksamen2.Stregsystemsklasser.TransactionSubclasses
 {
-    class InsertCashTransaction
+    class InsertCashTransaction : Transactions
     {
+        public InsertCashTransaction(uint id, User user, DateTime date, int amount)
+        {
+            TransactionID = id;
+            User = SetUser(user);
+            Date = SetDate(date);
+            Amount = amount;
+        }
+        public override string ToString()
+        {
+            return "Transaktion nr." +Date + " Beløb: " + Amount + "kr. optankes på " + User + "'s konto, tispunkt for optankning: " + Date;
+        }
+        public override void execute(int amount)
+        {
+            User.AddToSaldo(amount);
+        }
     }
 }

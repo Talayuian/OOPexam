@@ -24,15 +24,15 @@ namespace OOPeksamen2.Stregsystemsklasser
         #region Setters
         protected User SetUser(User user)
         {
-            if (user = null)
+            if (user == null)
                 throw new ArgumentNullException("need new user");
-            else return user
+            else return user;
         }
         protected DateTime SetDate(DateTime date)
         {
             if (date == null)
                 throw new ArgumentNullException("need date");
-            else return date
+            else return date;
 
         }
         #endregion
