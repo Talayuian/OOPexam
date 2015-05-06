@@ -9,7 +9,7 @@ namespace OOPeksamen2
 {
     class User //: IComparable
     {
-        public User(uint userID, string username, string firstname, string lastname, string email)
+        public User(uint userID, string firstname, string lastname, string username, string email)
         {
             UserID = userID;
             FirstName = CheckNullOrEmpty(firstname);
@@ -24,7 +24,7 @@ namespace OOPeksamen2
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string EMail { get; private set; }
-        public uint Balance { get; private set; }
+        public int Balance { get; private set; }
         #region Setters
         #region CheckNullOrEmpty
         private string CheckNullOrEmpty(string name)
@@ -32,13 +32,14 @@ namespace OOPeksamen2
             if (!(name == null || name == ""))
                 return name;
             //
-            else return "forkert indtastning";
+            else throw new ArgumentNullException("forkert indtastning");
         }
         #endregion
         #region Set E-Mail
         private string SetEmail(string mail)
         {
-            Regex Mail = new Regex("^([a-zA-Z0-9._-]+)@([a-zA-Z0-9]{1})([a-zA-Z0-9.-]+)([a-zA-Z0-9]{1}).([a-zA-Z0-9]+)");
+            Regex Mail = new Regex("^([a-zA-Z0-9\\.-_]+)\\@([a-zA-Z0-9]{1,})([a-zA-Z0-9\\.]+)([a-zA-Z0-9]{1,})\\.([a-zA-Z0-9]{2,3})");
+            //Regex Mail = new Regex("^[\\w]+\\@+\\b[a-zA-Z0-9]+[a-zA-Z0-9-.]+[a-zA-Z0-9]\\b+\\.[a-zA-Z0-9]{2,4}$");
             if (Mail.IsMatch(mail))
                 return mail;
             else
@@ -57,15 +58,15 @@ namespace OOPeksamen2
         #endregion
         #endregion
         #region Saldo interactions
-        public uint Saldoforespørgelse() { return Balance; }
+        public int Saldoforespørgelse() { return Balance; }
 
-        public uint AddToSaldo(uint Beløb)
+        public int AddToSaldo(int Beløb)
         {
             Balance += Beløb;
             return Balance;
         }
 
-        public uint SubtractSaldo(uint Beløb)
+        public int SubtractSaldo(int Beløb)
         {
             Balance -= Beløb;
             if (Balance < 50){
@@ -80,12 +81,33 @@ namespace OOPeksamen2
             return EMail;
         }
 
-
-
-
-        public int CompareTo(User user)
+        public int CompareTo(object obj)
         {
-            return (int)(UserID - user.UserID);
+            if (obj == null)
+                throw new ArgumentNullException("forgotten an object?");
+
+            User user = obj as User;
+            if (user != null)
+                return (int)(UserID - user.UserID);
+            else
+                throw new ArgumentException("Comparison failed");
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            User user = obj as User;
+            if (user != null)
+                return UserID.Equals(user.UserID);
+            else
+                throw new ArgumentException("Comparison failed");
+        }
+        
+        public override int GetHashCode()
+        {
+            return this.UserID.GetHashCode();
         }
     }
 }
