@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 
 
-namespace OOPeksamen2.Tests
+namespace OOPeksamen2
 {
     class TestUser
     {

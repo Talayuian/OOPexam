@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOPeksamen2.Stregsystemsklasser.TransactionSubclasses
+namespace OOPeksamen2
 {
     class BuyTransaction:Transactions
     {
@@ -16,8 +16,7 @@ namespace OOPeksamen2.Stregsystemsklasser.TransactionSubclasses
             Product = product;
             Amount = product.Price;
         }
-        protected Product Product { get; protected set; }
-        protected uint Amount { get; protected set; }
+        public Product Product { get; protected set; }
 
         public override string ToString()
         {
@@ -26,7 +25,7 @@ namespace OOPeksamen2.Stregsystemsklasser.TransactionSubclasses
         public override void execute()
         {
             if (Amount > User.Balance)
-                throw new Exception();
+                throw new InsufficientCreditsException();
             else
                 User.SubtractSaldo((int)Amount);
             

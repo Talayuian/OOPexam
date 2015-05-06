@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOPeksamen2.Stregsystemsklasser.TransactionSubclasses
+namespace OOPeksamen2
 {
     class InsertCashTransaction : Transactions
     {
@@ -13,15 +13,15 @@ namespace OOPeksamen2.Stregsystemsklasser.TransactionSubclasses
             TransactionID = id;
             User = SetUser(user);
             Date = SetDate(date);
-            Amount = amount;
+            Amount = (int)amount;
         }
         public override string ToString()
         {
             return "Transaktion nr." +Date + " Beløb: " + Amount + "kr. optankes på " + User + "'s konto, tispunkt for optankning: " + Date;
         }
-        public override void execute(int amount)
+        public override void execute()
         {
-            User.AddToSaldo(amount);
+            User.AddToSaldo((int)Amount);
         }
     }
 }

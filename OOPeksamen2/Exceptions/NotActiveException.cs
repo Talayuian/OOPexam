@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOPeksamen2.Exceptions
+namespace OOPeksamen2
 {
     class NotActiveException : Exception
     {
