@@ -35,7 +35,7 @@ namespace OOPeksamen2
         }
         public void DisplayEachProductLine(uint ID)
         {
-            Console.WriteLine(string.Format("{0,6}|{1,-36}|{2,8}", stringsystem.Products[ID].ProductID, stringsystem.Products[ID].ProductName, stringsystem.Products[ID].Price));
+            Console.WriteLine(string.Format("|{0,6}|{1,-36}|{2,8}|", stringsystem.Products[ID].ProductID, stringsystem.Products[ID].ProductName, stringsystem.Products[ID].Price));
         }
         public void DisplaySeparationLine()
         {
@@ -59,10 +59,14 @@ namespace OOPeksamen2
                 if (item.Value.Username.Equals(Username))
                 {
                     User User = item.Value;
-                    Console.WriteLine(User.ToString());
+                    Console.WriteLine("Username: " + Username + " Full Name: " + User.FirstName + " " + User.LastName + " Balance on account: " + User.Balance+ "\n\n");
+                    List<BuyTransaction> buytranslist =stringsystem.GetBuyTransactions(stringsystem.GetTransactionList(User.UserID));
+                    Console.WriteLine("Latest [{0}] bought items:", buytranslist.Count);
+                    foreach (BuyTransaction transaction in buytranslist)
+                    { Console.WriteLine("\n" +transaction); }
+                    if (User.Balance < 50) { Console.WriteLine("low on funds remaining funds: "+User.Balance); }
                     return;
                 }
-                
             }
             DisplayUserNotFound(Username);
         }
@@ -74,9 +78,10 @@ namespace OOPeksamen2
         {
             Console.WriteLine("Admin command [{0}] could not be found!",arg);
         }
-        public void DisplayUserBuysProduct(BuyTransaction transaction)
+        public void DisplayUserBuysProduct(uint id)
         {
-            Console.WriteLine(transaction);
+            
+            Console.WriteLine(stringsystem.GetProduct(id));
         }
         public void DisplayUserBuysProduct(int count, BuyTransaction transaction)
         {

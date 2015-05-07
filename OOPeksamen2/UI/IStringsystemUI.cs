@@ -13,7 +13,7 @@ namespace OOPeksamen2
         void DisplayUserInfo(string Username);
         void DisplayTooManyArgumentsError();
         void DisplayAdminCommandNotFoundMessage(string arg);
-        void DisplayUserBuysProduct(BuyTransaction transaction);
+        void DisplayUserBuysProduct(uint id);
         void DisplayUserBuysProduct(int count, BuyTransaction transaction);
         void Close();
         void DisplayInsufficientCash(User user);

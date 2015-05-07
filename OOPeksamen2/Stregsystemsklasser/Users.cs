@@ -58,8 +58,6 @@ namespace OOPeksamen2
         #endregion
         #endregion
         #region Saldo interactions
-        public int Saldoforespørgelse() { return Balance; }
-
         public int AddToSaldo(int Beløb)
         {
             Balance += Beløb;

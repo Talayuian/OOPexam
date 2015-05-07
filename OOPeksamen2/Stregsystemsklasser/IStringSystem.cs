@@ -8,13 +8,13 @@ namespace OOPeksamen2
 {
     interface IStringSystem
     {
-        void BuyProduct(User user, Product product);
+        void BuyProduct(User user, uint productID);
         void AddCreditsToAccount(User user, int amount);
         void ExecuteTransaction(Transactions transaction);
         Product GetProduct(uint id);
         User GetUser(string Username);
         List<Transactions> GetTransactionList(uint id);
         List<Product> GetActiveProducts();
-        void Logging(string Path, Transactions print);
+        //void Logging(string Path, Transactions print);
     }
 }

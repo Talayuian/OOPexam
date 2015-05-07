@@ -9,15 +9,21 @@ using System.Globalization;
 
 namespace OOPeksamen2
 {
-    public class StringSystem:IStringSystem
+    public class StringSystem : IStringSystem
     {
         public Dictionary<uint, User> Users = new Dictionary<uint, User>();
         public Dictionary<uint, Product> Products = new Dictionary<uint, Product>();
         public Dictionary<uint, Transactions> Transactions = new Dictionary<uint, Transactions>();
 
-
-        public void BuyProduct(User user, Product product)
+        public StringSystem()
         {
+            ProductsReader productreader = new ProductsReader();
+            productreader.Productreader();
+            Products = productreader.productsdic;
+        }
+        public void BuyProduct(User user, uint productID)
+        {
+            Product product = GetProduct(productID);
             BuyTransaction Purchase = new BuyTransaction((uint)Transactions.Count, user, product);
             ExecuteTransaction(Purchase);
         }
@@ -30,7 +36,7 @@ namespace OOPeksamen2
         {
             transaction.execute();
             Transactions.Add((uint)Transactions.Count, transaction);
-            Logging("Logfile.txt", transaction);
+           // Logging("Logfile.txt", transaction);
         }
         public Product GetProduct(uint id)
         {
@@ -57,8 +63,27 @@ namespace OOPeksamen2
                     TransactionList.Add(Transactions[i]);
             }
             if (TransactionList.Count == 0)
-                throw new NoTransactionsFoundException("couldn't find Transactions for this user");
+                throw new NoTransactionsFoundException("couldn't find BuyTransactions for this user");
             return TransactionList;
+        }
+        public List<BuyTransaction> GetBuyTransactions(List<Transactions> translist)
+        {
+            List<BuyTransaction> BuyTransList = new List<BuyTransaction>();
+            translist.Reverse();
+            foreach (Transactions item in translist)
+            {
+                if (item is BuyTransaction)
+                    BuyTransList.Add(item as BuyTransaction);
+                if (BuyTransList.Count == 10)
+                {
+                    break;
+                }
+            }
+            if (BuyTransList.Count == 0)
+            {
+                throw new NoTransactionsFoundException("no buy transactions found!!!");
+            }
+            return BuyTransList;
         }
         public List<Product> GetActiveProducts()
         {
@@ -73,10 +98,10 @@ namespace OOPeksamen2
                 throw new NoActiveProductsException("No Active Products added yet");
             return ActiveProductsList;
         }
-        public void Logging(string Path, Transactions print)
+ /*       public void Logging(string Path, Transactions print)
         {
             StreamWriter File = new StreamWriter(Path);
             File.WriteLine(print.ToString());
         }
-    }
+*/    }
 }

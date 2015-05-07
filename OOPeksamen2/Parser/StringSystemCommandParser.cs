@@ -29,14 +29,36 @@ namespace OOPeksamen2
 
         public void ParseCommand(string command)
         {
-            if (command.StartsWith(":"))
+            string[] split = command.Split(' ');
+            if (split[0].StartsWith(":"))
             {
-                string[] s = command.Split(' ');
-                admincmd[s[0]].Invoke(s);
+                admincmd[split[0]].Invoke(split);
             }
             else
             {
+                User user;
+                user = stringsystem.GetUser(split[0]);
+                if (split.Length == 1)
+                {
+                    CLI.DisplayUserInfo(split[0]);
+                }
+                else if (split.Length == 2)
+                {
+                    CLI.DisplayUserInfo(split[0]);
+                    uint productID;
+                    bool IsNumber = uint.TryParse(split[1], out productID);
+                    stringsystem.BuyProduct(user, productID);
+                    CLI.DisplayUserBuysProduct(productID);
+                }
+                else if(split.Length == 3)
+                {
+                    CLI.DisplayUserInfo(split[0]);
 
+                    uint productID;
+                    bool IsNumber = uint.TryParse(split[2], out productID);
+                    stringsystem.BuyProduct(user, productID);
+                    CLI.DisplayUserBuysProduct(productID);
+                }
             }
         }
 
