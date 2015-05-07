@@ -13,7 +13,7 @@ namespace OOPeksamen2
             ProductID = SetProductID(id);
             ProductName = SetProductName(name);
             Price = SetPrice(price);
-            Active = SetActive(active);
+            SetActive(active);
             CanBeBoughtOnCredit = false;
         }
         protected Product() { }
@@ -41,15 +41,15 @@ namespace OOPeksamen2
             Price = newPrice;
             return Price;
         }
-        public bool SetActive(bool act)
+        public void SetActive(bool act)
         {
             Active = act;
-            return Active;
+            
         }
-        public bool SetCanBeBoughtOnCredit(bool YesNo)
+        public void SetCanBeBoughtOnCredit(bool YesNo)
         {
             CanBeBoughtOnCredit = YesNo;
-            return CanBeBoughtOnCredit;
+            
         }
 
     }

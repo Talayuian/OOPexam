@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace OOPeksamen2
 {
-    public class StringSystem
+    public class StringSystem:IStringSystem
     {
         public Dictionary<uint, User> Users = new Dictionary<uint, User>();
         public Dictionary<uint, Product> Products = new Dictionary<uint, Product>();
@@ -38,11 +38,14 @@ namespace OOPeksamen2
                 throw new ProductNotExcistingException("Missing ID");
             return Products[id];
         }
-        public User GetUser(uint id)
+        public User GetUser(string Username)
         {
-            if (!(Users.ContainsKey(id)))
-                throw new UserNotExcistingException("Missing User");
-            return Users[id];
+            foreach (var user in Users)
+            {
+                if (user.Value.Username.Equals(Username))
+                    return user.Value;
+            }
+            throw new UserNotExcistingException("Missing User");
         }
         public List<Transactions> GetTransactionList(uint id)
         {

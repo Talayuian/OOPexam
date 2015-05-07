@@ -10,9 +10,22 @@ namespace OOPeksamen2
     {
         static void Main(string[] args)
         {
-            
+            Console.OutputEncoding = Encoding.Unicode;
             StringSystem stringsystem = new StringSystem();
-            Dictionary<uint, Product> Products = new Dictionary<uint, Product>();
+            StringSystemCLI CLI = new StringSystemCLI(stringsystem);
+            StringSystemCommandParser parser = new StringSystemCommandParser(stringsystem, CLI);
+
+            User user = new User((uint)stringsystem.Users.Count, "Line", "Larsen", "fredefup", "frederik@Palmelund.voldby.dk");
+            stringsystem.Users.Add(user.UserID, user);
+
+            Console.WriteLine(user.Balance);
+
+            parser.ParseCommand(":addcredits fredefup 100000");
+            Console.WriteLine(user.Balance);
+
+
+
+
             
             
 

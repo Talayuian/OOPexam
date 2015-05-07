@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPeksamen2
 {
-    public interface IStregsystemUI
+    public interface IStringsystemUI
     {
         void DisplayUserNotFound(string Username);
         void DisplayProductNotFound(uint ID);

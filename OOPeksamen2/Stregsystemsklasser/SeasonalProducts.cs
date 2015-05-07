@@ -13,7 +13,7 @@ namespace OOPeksamen2
             ProductID = SetProductID(id);
             ProductName = SetProductName(name);
             Price = SetPrice(price);
-            Active = SetActive(active);
+            SetActive(active) ;
             CanBeBoughtOnCredit = false;
             SeasonStart = seasonstart;
             SeasonEnd = seasonend;

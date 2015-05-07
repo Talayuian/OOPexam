@@ -6,130 +6,43 @@ using System.Threading.Tasks;
 
 namespace OOPeksamen2
 {
-    class StringSystemCommandParser : IStregsystemUI, IStringSystem
+    class StringSystemCommandParser
     {
-        StringSystem stringsystem;
-        StringSystemCLI CLI;
+        IStringSystem stringsystem;
+        IStringsystemUI CLI;
+        Dictionary<string, Action<string[]>> admincmd = new Dictionary<string, Action<string[]>>();
         public StringSystemCommandParser(StringSystem stringsystem, StringSystemCLI CLI)
         {
             this.stringsystem = stringsystem;
             this.CLI = CLI;
+            admincmd.Add(":q", s => CLI.Close());
+            admincmd.Add(":quit", s => CLI.Close());
+            admincmd.Add(":Q", s => CLI.Close());
+            admincmd.Add(":Quit", s => CLI.Close());
+            admincmd.Add(":deactivate", s => stringsystem.Products[uint.Parse(s[1])].SetActive(false));
+            admincmd.Add(":activate", s => stringsystem.Products[uint.Parse(s[1])].SetActive(true));
+            admincmd.Add(":crediton", s => stringsystem.Products[uint.Parse(s[1])].SetCanBeBoughtOnCredit(true));
+            admincmd.Add(":creditoff", s => stringsystem.Products[uint.Parse(s[1])].SetCanBeBoughtOnCredit(false));
+            admincmd.Add(":addcredits", s => stringsystem.Users[stringsystem.GetUser(s[1]).UserID].AddToSaldo(int.Parse(s[2])));
+
         }
 
-       /* public void ParseCommand(string command)
+        public void ParseCommand(string command)
         {
             if (command.StartsWith(":"))
-                //AdminCommand(command)
-            else
-	        {
-
-	        }
-        }
-        public void AdminCommand(string admCommand)
-        {
-            switch (admCommand)
             {
-                case(":q",":Q",":quit",":Quit"):
+                string[] s = command.Split(' ');
+                admincmd[s[0]].Invoke(s);
+            }
+            else
+            {
 
-                default:
-                    break;
             }
         }
-        */
 
 
 
 
-        // ----- IMPLEMENTING INTERFACE IStringsystemUI-----//
-        public void DisplayUserNotFound(string Username)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void DisplayProductNotFound(uint ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayUserInfo(string Username)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayTooManyArgumentsError()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayAdminCommandNotFoundMessage(string arg)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayUserBuysProduct(BuyTransaction transaction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayUserBuysProduct(int count, BuyTransaction transaction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Close()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayInsufficientCash(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayGeneralError(string errorString)
-        {
-            throw new NotImplementedException();
-        }
-        // ----- IMPLEMENTING INTERFACE IStringsystem-----//
-
-        public void BuyProduct(User user, Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddCreditsToAccount(User user, int amount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ExecuteTransaction(Transactions transaction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product GetProduct(uint id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User GetUser(uint id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Transactions> GetTransactionList(uint id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Product> GetActiveProducts()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Logging(string Path, Transactions print)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
