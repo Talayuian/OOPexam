@@ -13,6 +13,7 @@ namespace OOPeksamen2
         public StringSystemCLI(StringSystem stringsystem)
         {
             this.stringsystem = stringsystem;
+            Start();
 
         }
         public void Start()
