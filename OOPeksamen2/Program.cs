@@ -21,27 +21,13 @@ namespace OOPeksamen2
 
             parser.ParseCommand(":addcredits thepalmelund 1000000");
 
-            stringsystem.BuyProduct(user,11);
-            stringsystem.BuyProduct(user, 13);
-            stringsystem.BuyProduct(user, 14);
-            stringsystem.BuyProduct(user, 15);
-            stringsystem.BuyProduct(user, 16);
-            stringsystem.BuyProduct(user, 11);
-            stringsystem.BuyProduct(user, 13);
-            stringsystem.BuyProduct(user, 14);
-            stringsystem.BuyProduct(user, 15);
-            stringsystem.BuyProduct(user, 16);
-            stringsystem.BuyProduct(user, 11);
-            stringsystem.BuyProduct(user, 13);
-            stringsystem.BuyProduct(user, 14);
-            stringsystem.BuyProduct(user, 15);
-            stringsystem.BuyProduct(user, 16);
-            stringsystem.BuyProduct(user, 11);
-            stringsystem.BuyProduct(user, 13);
-            stringsystem.BuyProduct(user, 14);
-            stringsystem.BuyProduct(user, 15);
-            stringsystem.BuyProduct(user, 16);
-            
+            parser.ParseCommand("thepalmelund 11");
+            parser.ParseCommand("thepalmelund 13");
+            parser.ParseCommand("thepalmelund 14");
+            parser.ParseCommand("thepalmelund 15");
+            parser.ParseCommand("thepalmelund 16");
+
+            parser.ParseCommand("thepalmelund 20 11");
 
             parser.ParseCommand("thepalmelund");
             Console.ReadKey();

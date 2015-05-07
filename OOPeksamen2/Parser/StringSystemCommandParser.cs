@@ -36,34 +36,45 @@ namespace OOPeksamen2
             }
             else
             {
-                User user;
-                user = stringsystem.GetUser(split[0]);
+                User user = ParserGetUser(split);
                 if (split.Length == 1)
                 {
                     CLI.DisplayUserInfo(split[0]);
                 }
                 else if (split.Length == 2)
                 {
-                    CLI.DisplayUserInfo(split[0]);
-                    uint productID;
-                    bool IsNumber = uint.TryParse(split[1], out productID);
-                    stringsystem.BuyProduct(user, productID);
-                    CLI.DisplayUserBuysProduct(productID);
-                }
-                else if(split.Length == 3)
-                {
-                    CLI.DisplayUserInfo(split[0]);
 
                     uint productID;
-                    bool IsNumber = uint.TryParse(split[2], out productID);
-                    stringsystem.BuyProduct(user, productID);
-                    CLI.DisplayUserBuysProduct(productID);
+                    bool IsNumber = uint.TryParse(split[1], out productID);
+                    ParserBuyProduct(user, productID);
+
+                }
+                else if (split.Length == 3)
+                {
+                    uint productID;
+                    int count;
+                    bool IsNumberCount = int.TryParse(split[1], out count);
+                    bool IsNumberID = uint.TryParse(split[2], out productID);
+                    for (int i = 1; i == count; i++)
+                    {
+                        ParserBuyProduct(user, productID);
+                    }
+                    
                 }
             }
         }
 
-
-
+        public void ParserBuyProduct(User user, uint productID)
+        {
+            stringsystem.BuyProduct(user, productID);
+            CLI.DisplayUserBuysProduct(productID);
+        }
+        public User ParserGetUser(string[] split)
+        {
+            User user;
+            user = stringsystem.GetUser(split[0]);
+            return user;
+        }
 
 
     }
