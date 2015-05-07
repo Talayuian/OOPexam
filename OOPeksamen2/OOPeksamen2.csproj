@@ -66,9 +66,13 @@
     <Compile Include="Exceptions\NoTransactionsFoundException.cs" />
     <Compile Include="Exceptions\ProductNotExcistingException.cs" />
     <Compile Include="Exceptions\UserNotExcistingException.cs" />
+    <Compile Include="Parser\AdminCommands.cs" />
+    <Compile Include="Parser\StringSystemCommandParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stregsystemsklasser\IStringSystem.cs" />
     <Compile Include="Stregsystemsklasser\Product.cs" />
+    <Compile Include="Stregsystemsklasser\ProductsReader.cs" />
     <Compile Include="Stregsystemsklasser\SeasonalProducts.cs" />
     <Compile Include="Stregsystemsklasser\Transactions.cs" />
     <Compile Include="Stregsystemsklasser\TransactionSubclasses\BuyTransaction.cs" />
@@ -76,6 +80,8 @@
     <Compile Include="Stregsystemsklasser\Users.cs" />
     <Compile Include="StringSystem.cs" />
     <Compile Include="Tests\TestUser.cs" />
+    <Compile Include="UI\IStringsystemUI.cs" />
+    <Compile Include="UI\StringSystemCLI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPeksamen2
 {
-    class SeasonalProducts:Product
+    public class SeasonalProducts:Product
     {
         public SeasonalProducts(uint id, string name, uint price, bool active, DateTime seasonstart, DateTime seasonend)
         {

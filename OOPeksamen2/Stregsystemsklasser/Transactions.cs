@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace OOPeksamen2
 {
-    class Transactions
+    public class Transactions
     {
-        public Transactions(uint id, User user, DateTime date, int amount)
+        public Transactions(uint id, User user, int amount)
         {
             TransactionID = id;
             User = SetUser(user);
-            Date = SetDate(date);
+            Date = SetDate(DateTime.Now);
             Amount = amount;
         }
         protected Transactions() { }

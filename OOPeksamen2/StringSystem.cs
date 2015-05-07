@@ -9,35 +9,28 @@ using System.Globalization;
 
 namespace OOPeksamen2
 {
-    class StringSystem
+    public class StringSystem
     {
-        Dictionary<uint, User> Users = new Dictionary<uint, User>();
-        Dictionary<uint, Product> Products = new Dictionary<uint, Product>();
-        Dictionary<uint, Transactions> Transactions = new Dictionary<uint, Transactions>();
+        public Dictionary<uint, User> Users = new Dictionary<uint, User>();
+        public Dictionary<uint, Product> Products = new Dictionary<uint, Product>();
+        public Dictionary<uint, Transactions> Transactions = new Dictionary<uint, Transactions>();
 
 
         public void BuyProduct(User user, Product product)
         {
-            BuyTransaction Purchase = new BuyTransaction((uint)Transactions.Count, user, DateTime.Now, product);
+            BuyTransaction Purchase = new BuyTransaction((uint)Transactions.Count, user, product);
             ExecuteTransaction(Purchase);
         }
         public void AddCreditsToAccount(User user, int amount)
         {
-            InsertCashTransaction Insert = new InsertCashTransaction((uint)Transactions.Count, user, DateTime.Now, amount);
+            InsertCashTransaction Insert = new InsertCashTransaction((uint)Transactions.Count, user, amount);
             ExecuteTransaction(Insert);
         }
         public void ExecuteTransaction(Transactions transaction)
         {
-            try
-            {
-                transaction.execute();
-                Transactions.Add((uint)Transactions.Count, transaction);
-                Logging("Logfile.txt",transaction);
-            }
-            catch (Exception)
-            {
-                //implement
-            }
+            transaction.execute();
+            Transactions.Add((uint)Transactions.Count, transaction);
+            Logging("Logfile.txt", transaction);
         }
         public Product GetProduct(uint id)
         {
@@ -77,34 +70,10 @@ namespace OOPeksamen2
                 throw new NoActiveProductsException("No Active Products added yet");
             return ActiveProductsList;
         }
-        public void Logging(string Path,Transactions print)
+        public void Logging(string Path, Transactions print)
         {
             StreamWriter File = new StreamWriter(Path);
             File.WriteLine(print.ToString());
         }
-
-        public void SingleLineScanner(string line, Dictionary<uint, Product> Productdic)
-        {
-            string[] temp = line.Split(';');
-            uint id = 0;
-            uint.TryParse(temp[0],out id);
-            string name = temp[1];
-            uint price = 0;
-            uint.TryParse(temp[2],out price);
-            bool active= false;
-            if (temp[3] == "1")
-                active = true;
-            else if (temp[3] == "0")
-                active = false;
-            Productdic.Add(id,new Product(id, name, price, active));
-        }
-        public void ProductScanner(string FilePath, Dictionary<uint, Product> Productdic)
-        {
-            string[] lines = System.IO.File.ReadAllLines(FilePath);
-            foreach (string line in lines)
-            {
-                SingleLineScanner(line,Productdic);
-            }
-    }
     }
 }

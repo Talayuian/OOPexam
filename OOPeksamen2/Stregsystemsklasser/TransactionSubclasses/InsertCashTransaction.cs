@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace OOPeksamen2
 {
-    class InsertCashTransaction : Transactions
+    public class InsertCashTransaction : Transactions
     {
-        public InsertCashTransaction(uint id, User user, DateTime date, int amount)
+        public InsertCashTransaction(uint id, User user, int amount)
         {
             TransactionID = id;
             User = SetUser(user);
-            Date = SetDate(date);
+            Date = SetDate(DateTime.Now);
             Amount = (int)amount;
         }
         public override string ToString()

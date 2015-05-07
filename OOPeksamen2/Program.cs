@@ -13,7 +13,7 @@ namespace OOPeksamen2
             
             StringSystem stringsystem = new StringSystem();
             Dictionary<uint, Product> Products = new Dictionary<uint, Product>();
-            stringsystem.ProductScanner("products.csv",Products);
+            
             
 
             Console.ReadKey();

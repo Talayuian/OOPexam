@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace OOPeksamen2
 {
-    class User //: IComparable
+    public class User //: IComparable
     {
         public User(uint userID, string firstname, string lastname, string username, string email)
         {
@@ -78,7 +78,7 @@ namespace OOPeksamen2
 
         public override string ToString()
         {
-            return EMail;
+            return "Name: "+FirstName+" "+LastName+" E-Mail: "+EMail;
         }
 
         public int CompareTo(object obj)

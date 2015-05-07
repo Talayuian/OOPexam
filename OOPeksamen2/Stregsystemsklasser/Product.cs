@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPeksamen2
 {
-    class Product
+    public class Product
     {
         public Product(uint id, string name, uint price, bool active)
         {
