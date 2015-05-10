@@ -16,7 +16,7 @@ namespace OOPeksamen2
             LastName = CheckNullOrEmpty(lastname);
             Username = SetUserName(CheckNullOrEmpty(username));
             EMail = SetEmail(CheckNullOrEmpty(email));
-            Balance = 1;
+            Balance = 0;
             
         }
         public uint UserID { get; private set; }
@@ -106,6 +106,12 @@ namespace OOPeksamen2
         public override int GetHashCode()
         {
             return this.UserID.GetHashCode();
+        }
+        public double IntToDouble(int Integer)
+        {
+            double doubleinteger = Convert.ToDouble(Integer);
+            doubleinteger = doubleinteger / 100;
+            return doubleinteger;
         }
     }
 }

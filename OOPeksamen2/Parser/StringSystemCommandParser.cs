@@ -46,6 +46,7 @@ namespace OOPeksamen2
 
                     uint productID;
                     bool IsNumber = uint.TryParse(split[1], out productID);
+                    if (IsNumber == false) { /* throw custom exception*/}
                     ParserBuyProduct(user, productID);
 
                 }
@@ -54,8 +55,10 @@ namespace OOPeksamen2
                     uint productID;
                     int count;
                     bool IsNumberCount = int.TryParse(split[1], out count);
+                    if (IsNumberCount == false) { /* throw custom exception*/}
                     bool IsNumberID = uint.TryParse(split[2], out productID);
-                    for (int i = 1; i == count; i++)
+                    if (IsNumberID == false) { /* throw custom exception*/}
+                    for (int i = 0; i <= count-1; i++)
                     {
                         ParserBuyProduct(user, productID);
                     }

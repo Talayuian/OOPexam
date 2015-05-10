@@ -20,7 +20,7 @@ namespace OOPeksamen2
 
         public override string ToString()
         {
-            return "Produkt: "+Product.ProductName +" pris: "+Amount+" User Buying Product: "+User+" Tidspunkt: "+Date+" ID på Transaktion: "+TransactionID;
+            return "Produkt: "+Product.ProductName +" pris: "+User.IntToDouble( Amount)+" User Buying Product: "+User+" Tidspunkt: "+Date+" ID på Transaktion: "+TransactionID;
         }
         public override void execute()
         {
