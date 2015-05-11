@@ -11,22 +11,26 @@ namespace OOPeksamen2
 {
     public class StringSystem : IStringSystem
     {
+        //dictionaries that will hold the stringsystem items.
         public Dictionary<uint, User> Users = new Dictionary<uint, User>();
         public Dictionary<uint, Product> Products = new Dictionary<uint, Product>();
         public Dictionary<uint, Transactions> Transactions = new Dictionary<uint, Transactions>();
 
         public StringSystem()
         {
+            //calling products reader to get files from csv file
             ProductsReader productreader = new ProductsReader();
             productreader.Productreader();
             Products = productreader.productsdic;
         }
+        //method to buy a product
         public void BuyProduct(User user, uint productID)
         {
             Product product = GetProduct(productID);
             BuyTransaction Purchase = new BuyTransaction((uint)Transactions.Count, user, product);
             ExecuteTransaction(Purchase);
         }
+        //method to add credits to account
         public void AddCreditsToAccount(User user, int amount)
         {
             InsertCashTransaction Insert = new InsertCashTransaction((uint)Transactions.Count, user, amount);
@@ -66,6 +70,7 @@ namespace OOPeksamen2
                 throw new NoTransactionsFoundException("couldn't find BuyTransactions for this user");
             return TransactionList;
         }
+        //
         public List<BuyTransaction> GetBuyTransactions(List<Transactions> translist)
         {
             List<BuyTransaction> BuyTransList = new List<BuyTransaction>();
@@ -88,11 +93,10 @@ namespace OOPeksamen2
         public List<Product> GetActiveProducts()
         {
             List<Product> ActiveProductsList = new List<Product>();
-            int ProductsLength = Products.Count;
-            for (int i = 0; i < ProductsLength; i++)
+            foreach (var item in Products)
             {
-                if (Products[(uint)i].Active == true)
-                    ActiveProductsList.Add(Products[(uint)i]);
+                if (item.Value.Active == true)
+                    ActiveProductsList.Add(item.Value);
             }
             if (ActiveProductsList.Count == 0)
                 throw new NoActiveProductsException("No Active Products added yet");
@@ -101,7 +105,7 @@ namespace OOPeksamen2
         public void Logging(Transactions print)
         {
             string printline = print.ToString();
-            File.AppendAllText(("../../resourcer/transactions.log"), printline + Environment.NewLine);
+            File.AppendAllText(("..\\..\\ressources\\transactions.log"), printline + Environment.NewLine);
         }
         public User adduser(uint ID,string[] userInfo)
         {

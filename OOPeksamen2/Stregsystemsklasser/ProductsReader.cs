@@ -11,10 +11,10 @@ namespace OOPeksamen2
     public class ProductsReader
     {
         public Dictionary<uint, Product> productsdic = new Dictionary<uint, Product>();
-
+        // reading products from CSV file
         public Dictionary<uint, Product> Productreader()
         {
-            string[] ProductReadLine = File.ReadAllLines("..\\..\\resourcer\\products.csv", Encoding.UTF7);
+            string[] ProductReadLine = File.ReadAllLines("..\\..\\ressources\\products.csv", Encoding.UTF7);
             int StringLenTemp = ProductReadLine.Length;
             for (int i = 1; i < StringLenTemp; i++)
             {

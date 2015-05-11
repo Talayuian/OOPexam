@@ -66,6 +66,7 @@
     <Compile Include="Exceptions\NoTransactionsFoundException.cs" />
     <Compile Include="Exceptions\ProductNotExcistingException.cs" />
     <Compile Include="Exceptions\UserNotExcistingException.cs" />
+    <Compile Include="Exceptions\NotANumberException.cs" />
     <Compile Include="Parser\StringSystemCommandParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,17 +78,17 @@
     <Compile Include="Stregsystemsklasser\TransactionSubclasses\BuyTransaction.cs" />
     <Compile Include="Stregsystemsklasser\TransactionSubclasses\InsertCashTransaction.cs" />
     <Compile Include="Stregsystemsklasser\Users.cs" />
-    <Compile Include="StringSystem.cs" />
+    <Compile Include="Stregsystemsklasser\StringSystem.cs" />
     <Compile Include="Tests\TestUser.cs" />
     <Compile Include="UI\IStringsystemUI.cs" />
     <Compile Include="UI\StringSystemCLI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="resourcer\eksamensopgave 2015 - stregsystem.pdf" />
-    <None Include="resourcer\products.csv" />
+    <None Include="ressources\eksamensopgave 2015 - stregsystem.pdf" />
+    <None Include="ressources\products.csv" />
     <None Include="packages.config" />
-    <None Include="resourcer\transactions.log" />
+    <None Include="ressources\transactions.log" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
