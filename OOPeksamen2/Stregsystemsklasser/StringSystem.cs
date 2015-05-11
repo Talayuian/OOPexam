@@ -70,7 +70,6 @@ namespace OOPeksamen2
                 throw new NoTransactionsFoundException("couldn't find BuyTransactions for this user");
             return TransactionList;
         }
-        //
         public List<BuyTransaction> GetBuyTransactions(List<Transactions> translist)
         {
             List<BuyTransaction> BuyTransList = new List<BuyTransaction>();
@@ -103,7 +102,7 @@ namespace OOPeksamen2
             return ActiveProductsList;
         }
         public void Logging(Transactions print)
-        {
+        {//writes transactions to logfile
             string printline = print.ToString();
             File.AppendAllText(("..\\..\\ressources\\transactions.log"), printline + Environment.NewLine);
         }
@@ -112,7 +111,7 @@ namespace OOPeksamen2
             for (uint i = 0; i < Users.Count; i++)
             {
                 if (Users[i].Username == userInfo[3])
-                    throw new ArgumentException();
+                    throw new UsernametakenException("Username already in use");
             }
             for (int j = 5; j < userInfo.Length; j++)
             {

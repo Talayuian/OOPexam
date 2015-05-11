@@ -118,6 +118,10 @@ namespace OOPeksamen2
             {
                 CLI.DisplayUserNotFound((string)ex.Data["User"]);
             }
+            catch (UsernametakenException ex)
+            {
+                CLI.DisplayGeneralError(ex.Message);
+            }
             // .net exceptions
             catch (KeyNotFoundException)
             {

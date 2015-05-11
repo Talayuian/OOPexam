@@ -65,6 +65,7 @@
     <Compile Include="Exceptions\NotActiveException.cs" />
     <Compile Include="Exceptions\NoTransactionsFoundException.cs" />
     <Compile Include="Exceptions\ProductNotExcistingException.cs" />
+    <Compile Include="Exceptions\UsernametakenException.cs" />
     <Compile Include="Exceptions\UserNotExcistingException.cs" />
     <Compile Include="Parser\StringSystemCommandParser.cs" />
     <Compile Include="Program.cs" />
@@ -76,7 +77,7 @@
     <Compile Include="Stregsystemsklasser\Transactions.cs" />
     <Compile Include="Stregsystemsklasser\TransactionSubclasses\BuyTransaction.cs" />
     <Compile Include="Stregsystemsklasser\TransactionSubclasses\InsertCashTransaction.cs" />
-    <Compile Include="Stregsystemsklasser\Users.cs" />
+    <Compile Include="Stregsystemsklasser\User.cs" />
     <Compile Include="Stregsystemsklasser\StringSystem.cs" />
     <Compile Include="Tests\TestUser.cs" />
     <Compile Include="UI\IStringsystemUI.cs" />
