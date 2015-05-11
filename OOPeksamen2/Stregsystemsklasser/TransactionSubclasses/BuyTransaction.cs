@@ -20,14 +20,22 @@ namespace OOPeksamen2
 
         public override string ToString()
         {
-            return "Produkt: "+Product.ProductName +" pris: "+User.IntToDouble( Amount)+" User Buying Product: "+User+" Tidspunkt: "+Date+" ID på Transaktion: "+TransactionID;
+            return "Produkt: "+Product.ProductName +" pris: "+Amount+" User Buying Product: "+User+" Tidspunkt: "+Date+" ID på Transaktion: "+TransactionID;
         }
         public override void execute()
         {
             if (Amount > User.Balance)
-                throw new InsufficientCreditsException();
-            else
-                User.SubtractSaldo(Amount);
+                if (Product.CanBeBoughtOnCredit == false)
+                {
+                    InsufficientCreditsException InsufficientCreditsException = new InsufficientCreditsException("insufficient funds for the chosen item");
+                    InsufficientCreditsException.Data["User"] = User.Username;
+                    InsufficientCreditsException.Data["Product"] = Product.ProductID;
+                    throw InsufficientCreditsException;
+                }
+
+                else
+                    User.SubtractSaldo(Amount);
+            else User.SubtractSaldo(Amount);
             
         }
     }

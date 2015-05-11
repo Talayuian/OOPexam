@@ -36,7 +36,7 @@ namespace OOPeksamen2
         {
             transaction.execute();
             Transactions.Add((uint)Transactions.Count, transaction);
-           // Logging("Logfile.txt", transaction);
+            Logging(transaction);
         }
         public Product GetProduct(uint id)
         {
@@ -98,10 +98,24 @@ namespace OOPeksamen2
                 throw new NoActiveProductsException("No Active Products added yet");
             return ActiveProductsList;
         }
- /*       public void Logging(string Path, Transactions print)
+        public void Logging(Transactions print)
         {
-            StreamWriter File = new StreamWriter(Path);
-            File.WriteLine(print.ToString());
+            string printline = print.ToString();
+            File.AppendAllText(("../../resourcer/transactions.log"), printline + Environment.NewLine);
         }
-*/    }
+        public User adduser(uint ID,string[] userInfo)
+        {
+            for (uint i = 0; i < Users.Count; i++)
+            {
+                if (Users[i].Username == userInfo[3])
+                    throw new ArgumentException();
+            }
+            for (int j = 5; j < userInfo.Length; j++)
+            {
+                userInfo[1] += " " + userInfo[j];
+            }
+            User user = new User(ID, userInfo[1], userInfo[2], userInfo[3], userInfo[4]);
+            return user;
+        }
+    }
 }

@@ -17,7 +17,7 @@ namespace OOPeksamen2
         }
         public override string ToString()
         {
-            return "Transaktion nr." +Date + " Beløb: " + Amount + "kr. optankes på " + User + "'s konto, tispunkt for optankning: " + Date;
+            return "Transaktion nr.[" +Date + "] Beløb: [" + Amount + "]kr. optankes på " + User.Username + "'s konto, tispunkt for optankning: [" + Date +"]";
         }
         public override void execute()
         {

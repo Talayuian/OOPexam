@@ -58,9 +58,9 @@ namespace OOPeksamen2
         #endregion
         #endregion
         #region Saldo interactions
-        public int AddToSaldo(int Beløb)
+        public int AddToSaldo(int amount)
         {
-            Balance += Beløb;
+            Balance += amount;
             return Balance;
         }
 
@@ -107,11 +107,11 @@ namespace OOPeksamen2
         {
             return this.UserID.GetHashCode();
         }
-        public double IntToDouble(int Integer)
+        public int doubletoint(double Integer)
         {
-            double doubleinteger = Convert.ToDouble(Integer);
-            doubleinteger = doubleinteger / 100;
-            return doubleinteger;
+            Integer = Integer * 100;
+            int intinteger = Convert.ToInt32(Integer);
+            return intinteger;
         }
     }
 }

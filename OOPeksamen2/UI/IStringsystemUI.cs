@@ -16,7 +16,7 @@ namespace OOPeksamen2
         void DisplayUserBuysProduct(uint id);
         void DisplayUserBuysProduct(int count, BuyTransaction transaction);
         void Close();
-        void DisplayInsufficientCash(User user);
+        void DisplayInsufficientCash(User user,uint productID);
         void DisplayGeneralError(string errorString);
     }
 }

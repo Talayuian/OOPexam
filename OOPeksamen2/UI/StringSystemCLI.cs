@@ -13,12 +13,24 @@ namespace OOPeksamen2
         public StringSystemCLI(StringSystem stringsystem)
         {
             this.stringsystem = stringsystem;
-            Start();
-
+            CloseProgram = false;
         }
-        public void Start()
+        public void Start(StringSystemCommandParser parser)
         {
-            DisplayActiveProducts();
+            string input;
+            while (CloseProgram == false)
+            {
+                DisplayActiveProducts();
+                input = Console.ReadLine();
+                parser.ParseCommand(input);
+                Console.WriteLine("press any key to reload screen and hide your informations:");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            if (CloseProgram == true)
+            {
+                Environment.Exit(0);
+            }
         }
         public void DisplayActiveProducts()
         {
@@ -35,11 +47,11 @@ namespace OOPeksamen2
         }
         public void DisplayEachProductLine(uint ID)
         {
-            Console.WriteLine(string.Format("|{0,6}|{1,-36}|{2,8}|", stringsystem.Products[ID].ProductID, stringsystem.Products[ID].ProductName, stringsystem.Products[ID].Price));
+            Console.WriteLine(string.Format("|{0,6}|{1,-36}|{2,8:N2}kr.|", stringsystem.Products[ID].ProductID, stringsystem.Products[ID].ProductName,((double) stringsystem.Products[ID].Price/100)));
         }
         public void DisplaySeparationLine()
         {
-            Console.WriteLine("|------|------------------------------------|--------|");
+            Console.WriteLine("|------|------------------------------------|-----------|");
         }
 
         /*-----iMPLEMENTATION OF INTERFACE----- */
@@ -59,12 +71,12 @@ namespace OOPeksamen2
                 if (item.Value.Username.Equals(Username))
                 {
                     User User = item.Value;
-                    Console.WriteLine("Username: " + Username + " Full Name: " + User.FirstName + " " + User.LastName + " Balance on account: " + User.Balance + "\n\n");
+                    Console.WriteLine("Username: [{0}] \nFull Name: [{1}]\nBalance on account: [{2,8:N2}]\n",Username,User.FirstName + " " + User.LastName,(double)User.Balance/100);
                     List<BuyTransaction> buytranslist = stringsystem.GetBuyTransactions(stringsystem.GetTransactionList(User.UserID));
                     Console.WriteLine("Latest [{0}] bought items:", buytranslist.Count);
                     foreach (BuyTransaction transaction in buytranslist)
                     { Console.WriteLine("\n" + transaction); }
-                    if (User.Balance < 50) { Console.WriteLine("low on funds remaining funds: " + User.Balance); }
+                    if (User.Balance < 50) { Console.WriteLine("low on funds remaining funds: " + (double)User.Balance / 100); }
                     return;
                 }
             }
@@ -76,7 +88,7 @@ namespace OOPeksamen2
         }
         public void DisplayAdminCommandNotFoundMessage(string arg)
         {
-            Console.WriteLine("Admin command [{0}] could not be found!", arg);
+            Console.WriteLine("Admin command [{0}] could not be found!",arg);
         }
         public void DisplayUserBuysProduct(uint id)
         {
@@ -89,11 +101,13 @@ namespace OOPeksamen2
         }
         public void Close()
         {
-            System.Environment.Exit(0);
+            CloseProgram = true;
         }
-        public void DisplayInsufficientCash(User user)
+        public void DisplayInsufficientCash(User user, uint productID)
         {
-            Console.WriteLine("Insufficient funds on [{0}]'s account, [{0}]'s balance is [{1}]", user.Username, user.Balance);
+            Product product = stringsystem.GetProduct(productID);
+            Console.WriteLine("Insufficient funds on [{0}]'s account, [{0}]'s balance is [{1,6:N2}]", user.Username,(double) user.Balance);
+            Console.WriteLine("[{1}][{0}] cannot be bought", product.ProductName,product.ProductID);
         }
         public void DisplayGeneralError(string errorString)
         {
@@ -105,6 +119,6 @@ namespace OOPeksamen2
             doubleinteger = doubleinteger / 100;
             return doubleinteger;
         }
-
+        private bool CloseProgram { get; set; }
     }
 }
