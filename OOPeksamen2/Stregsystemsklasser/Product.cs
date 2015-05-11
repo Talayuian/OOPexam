@@ -13,20 +13,20 @@ namespace OOPeksamen2
             ProductID = SetProductID(id);
             ProductName = SetProductName(name);
             Price = SetPrice(price);
-            SetActive(active);
+            Active = active;
             CanBeBoughtOnCredit = false;
         }
         protected Product() { }
         public uint ProductID { get; protected set; }
         public string ProductName { get; protected set; }
-        public uint Price { get; protected set; }
-        public bool Active { get; protected set; }
-        public bool CanBeBoughtOnCredit { get; protected set; }
+        public uint Price { get; set; }
+        public bool Active { get; set; }
+        public bool CanBeBoughtOnCredit { get; set; }
 
         protected uint SetProductID(uint productID)
         {
             if (productID == 0)
-                throw new ArgumentNullException("product med 0 ID'et");
+                throw new ArgumentNullException("product with the 0 ID");
             else
                 return productID;
         }
@@ -34,23 +34,12 @@ namespace OOPeksamen2
         {
             if (!(name == null || name == ""))
                 return name;
-            else throw new ArgumentNullException("forkert indtastning");
+            else throw new ArgumentNullException("wrong name input");
         }
         public uint SetPrice(uint newPrice)
         {
             Price = newPrice;
             return Price;
         }
-        public void SetActive(bool act)
-        {
-            Active = act;
-            
-        }
-        public void SetCanBeBoughtOnCredit(bool YesNo)
-        {
-            CanBeBoughtOnCredit = YesNo;
-            
-        }
-
     }
 }

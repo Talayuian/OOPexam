@@ -22,13 +22,13 @@ namespace OOPeksamen2
             admincmd.Add(":Q", s => CLI.Close());
             admincmd.Add(":Quit", s => CLI.Close());
             //admin commands setting  if product is active or not
-            //command is :activate/deactivate productID
-            admincmd.Add(":deactivate", s => stringsystem.Products[uint.Parse(s[1])].SetActive(false));
-            admincmd.Add(":activate", s => stringsystem.Products[uint.Parse(s[1])].SetActive(true));
+            //lambda expression for activation and deactivation of products
+            admincmd.Add(":deactivate", s => stringsystem.Products[uint.Parse(s[1])].Active =false);
+            admincmd.Add(":activate", s => stringsystem.Products[uint.Parse(s[1])].Active =true);
             //admin commands to enable credit or disable credit, 
-            //
-            admincmd.Add(":crediton", s => stringsystem.Products[uint.Parse(s[1])].SetCanBeBoughtOnCredit(true));
-            admincmd.Add(":creditoff", s => stringsystem.Products[uint.Parse(s[1])].SetCanBeBoughtOnCredit(false));
+            //lambda expression for "can be bought on credit"-porperty of products
+            admincmd.Add(":crediton", s => stringsystem.Products[uint.Parse(s[1])].CanBeBoughtOnCredit =true);
+            admincmd.Add(":creditoff", s => stringsystem.Products[uint.Parse(s[1])].CanBeBoughtOnCredit =false);
             admincmd.Add(":addcredits", s => stringsystem.AddCreditsToAccount(stringsystem.GetUser(s[1]),int.Parse(s[2])));
             admincmd.Add(":adduser", s => stringsystem.Users.Add((uint) stringsystem.Users.Count, stringsystem.adduser((uint)stringsystem.Users.Count,s)));
             admincmd.Add(":setprise", s => stringsystem.Products[uint.Parse(s[1])].SetPrice(uint.Parse(s[2])));
@@ -62,7 +62,7 @@ namespace OOPeksamen2
 
                         uint productID;
                         bool IsNumber = uint.TryParse(split[1], out productID);
-                        if (IsNumber == false) { throw new NotANumberException("productID is not a number");}
+                        if (IsNumber == false) { CLI.DisplayAdminCommandNotFoundMessage("productID is not a number"); return; }
                         ParserBuyProduct(user, productID);
 
                     }
@@ -72,9 +72,9 @@ namespace OOPeksamen2
                         uint productID;
                         int count;
                         bool IsNumberCount = int.TryParse(split[1], out count);
-                        if (IsNumberCount == false) { throw new NotANumberException("numbers of items you want to buy is not a number");}
+                        if (IsNumberCount == false) { CLI.DisplayAdminCommandNotFoundMessage("numbers of items you want to buy is not a number"); return; }
                         bool IsNumberID = uint.TryParse(split[2], out productID);
-                        if (IsNumberID == false) { throw new NotANumberException("productID is not a number");}
+                        if (IsNumberID == false) { CLI.DisplayAdminCommandNotFoundMessage("productID is not a number"); return; }
                         //check if user can afford purchase, and do purchase if affordable.
                         int totalprice = count*(int)stringsystem.Products[productID].Price;
                         if (totalprice <= user.Balance)
@@ -88,7 +88,7 @@ namespace OOPeksamen2
                             CLI.DisplayInsufficientFundsMultiBuy(count,stringsystem.Products[productID]);
 
                     }
-                    else throw new ArgumentException("number of command input");
+                    else CLI.DisplayTooManyArgumentsError("number of command input");
                 }
 
             }
@@ -100,19 +100,15 @@ namespace OOPeksamen2
             }
             catch (NoActiveProductsException ex)
             {
-                
+                CLI.DisplayGeneralError(ex.Message);
             }
             catch (NotActiveException ex)
             {
-                
-            }
-            catch (NotANumberException ex)
-            {
-                CLI.DisplayNotANumberError(ex.Message);
+                CLI.DisplayGeneralError(ex.Message);
             }
             catch (NoTransactionsFoundException ex)
             {
-                
+                CLI.DisplayGeneralError(ex.Message);
             }
             catch (ProductNotExcistingException ex)
             {
@@ -127,9 +123,9 @@ namespace OOPeksamen2
             {
                 CLI.DisplayAdminCommandNotFoundMessage(command);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentNullException ex)
             {
-                CLI.DisplayTooManyArgumentsError(ex.Message);
+                CLI.DisplayGeneralError(ex.Message);
             }
         }
         public void ParserBuyProduct(User user, uint productID)

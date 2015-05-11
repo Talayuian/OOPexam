@@ -155,8 +155,5 @@ namespace OOPeksamen2
         {
             Console.WriteLine("Error Occured: [{0}]", errorString);
         }
-
-
-       
     }
 }

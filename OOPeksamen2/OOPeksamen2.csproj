@@ -66,7 +66,6 @@
     <Compile Include="Exceptions\NoTransactionsFoundException.cs" />
     <Compile Include="Exceptions\ProductNotExcistingException.cs" />
     <Compile Include="Exceptions\UserNotExcistingException.cs" />
-    <Compile Include="Exceptions\NotANumberException.cs" />
     <Compile Include="Parser\StringSystemCommandParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
