@@ -118,6 +118,10 @@ namespace OOPeksamen2
         public void Close()
         {
             CloseProgram = true;
+            foreach (var user in stringsystem.Users)
+            {
+                stringsystem.logUsers(user.Value);
+            }
         }
         //converts unsigned integer to a double float
         public double UintToDouble(uint UInteger)

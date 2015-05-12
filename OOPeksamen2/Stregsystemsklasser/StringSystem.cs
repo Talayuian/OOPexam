@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Globalization;
 
+
 namespace OOPeksamen2
 {
     public class StringSystem : IStringSystem
@@ -18,10 +19,23 @@ namespace OOPeksamen2
 
         public StringSystem()
         {
-            //calling products reader to get files from csv file
-            ProductsReader productreader = new ProductsReader();
-            productreader.Productreader();
-            Products = productreader.productsdic;
+            //check if products file exists
+            if (File.Exists("..\\..\\ressources\\products.csv"))
+            {
+                //calling products reader to get files from csv file
+                ProductsReader productreader = new ProductsReader();
+                productreader.Productreader();
+                Products = productreader.productsdic;
+            }
+            //check if users logfile is made
+            if (File.Exists("..\\..\\ressources\\UserLog.csv"))
+            {
+                //add users from file
+                UserReader userreader = new UserReader();
+                userreader.Userreader();
+                Users = userreader.users;
+                File.Delete("..\\..\\ressources\\UserLog.csv");
+            }
         }
         //method to buy a product
         public void BuyProduct(User user, uint productID)
@@ -104,7 +118,12 @@ namespace OOPeksamen2
         public void Logging(Transactions print)
         {//writes transactions to logfile
             string printline = print.ToString();
-            File.AppendAllText(("..\\..\\ressources\\transactions.log"), printline + Environment.NewLine);
+            File.AppendAllText(("..\\..\\ressources\\transactions.log"), printline + Environment.NewLine, Encoding.UTF7);
+        }
+        public void logUsers(User user)
+        {
+            string printline = user.UserID +":"+user.FirstName+":"+user.LastName+":"+user.Username+":"+user.EMail+":"+user.Balance ;
+            File.AppendAllText(("..\\..\\ressources\\UserLog.csv"), printline + Environment.NewLine, Encoding.UTF7);
         }
         public User adduser(uint ID,string[] userInfo)
         {
@@ -117,7 +136,7 @@ namespace OOPeksamen2
             {
                 userInfo[1] += " " + userInfo[j];
             }
-            User user = new User(ID, userInfo[1], userInfo[2], userInfo[3], userInfo[4]);
+            User user = new User(ID, userInfo[1], userInfo[2], userInfo[3], userInfo[4],0);
             return user;
         }
     }

@@ -79,6 +79,7 @@
     <Compile Include="Stregsystemsklasser\TransactionSubclasses\InsertCashTransaction.cs" />
     <Compile Include="Stregsystemsklasser\User.cs" />
     <Compile Include="Stregsystemsklasser\StringSystem.cs" />
+    <Compile Include="Stregsystemsklasser\UserReader.cs" />
     <Compile Include="Tests\TestUser.cs" />
     <Compile Include="UI\IStringsystemUI.cs" />
     <Compile Include="UI\StringSystemCLI.cs" />
@@ -89,6 +90,7 @@
     <None Include="ressources\products.csv" />
     <None Include="packages.config" />
     <None Include="ressources\transactions.log" />
+    <None Include="ressources\UserLog.csv" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

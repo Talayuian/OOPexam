@@ -9,15 +9,14 @@ namespace OOPeksamen2
 {
     public class User //: IComparable
     {
-        public User(uint userID, string firstname, string lastname, string username, string email)
+        public User(uint userID, string firstname, string lastname, string username, string email, int balance)
         {
             UserID = userID;
             FirstName = CheckNullOrEmpty(firstname);
             LastName = CheckNullOrEmpty(lastname);
             Username = SetUserName(CheckNullOrEmpty(username));
             EMail = SetEmail(CheckNullOrEmpty(email));
-            Balance = 0;
-            
+            Balance = balance;
         }
         public uint UserID { get; private set; }
         public string Username { get; private set; }

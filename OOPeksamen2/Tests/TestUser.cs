@@ -22,7 +22,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "frederik.palmelund@gmail.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "Daniel.Sørensen@gmail.com",0);
                 }
                 catch (Exception)
                 {
@@ -39,7 +39,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, null, "palmelund", "thepalmelund", "frederik.palmelund@gmail.com");
+                    User user = new User(1, null, "Sørensen", "Talayuian", "Daniel.Sørensen@gmail.com",0);
                 }
                 catch (Exception)
                 {
@@ -56,7 +56,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "", "palmelund", "thepalmelund", "frederik.palmelund@gmail.com");
+                    User user = new User(1, "", "Sørensen", "Talayuian", "Daniel.Sørensen@gmail.com",0);
                 }
                 catch (Exception)
                 {
@@ -77,7 +77,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "frederik.palmelund@gmail.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "Daniel.Sørensen@gmail.com",0);
                 }
                 catch
                 {
@@ -94,7 +94,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", null, "thepalmelund", "frederik.palmelund@gmail.com");
+                    User user = new User(1, "Daniel", null, "Talayuian", "Daniel.Sørensen@gmail.com",0);
                 }
                 catch
                 {
@@ -111,7 +111,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "", "thepalmelund", "frederik.palmelund@gmail.com");
+                    User user = new User(1, "Daniel", "", "Talayuian", "Daniel.Sørensen@gmail.com",0);
                 }
                 catch
                 {
@@ -131,7 +131,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "frederik.palmelund@gmail.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "Daniel.Sørensen@gmail.com",0);
                 }
                 catch (Exception)
                 {
@@ -150,7 +150,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "frederik.palmelund@gmail.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "Daniel.Sørensen@gmail.com",0);
                 }
                 catch (Exception)
                 {
@@ -167,7 +167,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "frederik.palmelund@gmail@me.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "Daniel.Sørensen@gmail@me.com",0);
                 }
                 catch (Exception)
                 {
@@ -184,7 +184,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "frederik.palmelund@.gmail.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "Daniel.Sørensen@.gmail.com",0);
                 }
                 catch (Exception)
                 {
@@ -201,7 +201,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "frederik.palmelund@.gm#¤%&/a#il.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "Daniel.Sørensen@.gm#¤%&/a#il.com",0);
                 }
                 catch (Exception)
                 {
@@ -218,7 +218,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "fred$erik.palmelund@gmail.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "dani$el.Sørensen@gmail.com",0);
                 }
                 catch (Exception)
                 {
@@ -235,7 +235,7 @@ namespace OOPeksamen2
 
                 try
                 {
-                    User user = new User(1, "frederik", "palmelund", "thepalmelund", "frederik.palmelund@gma/il.com");
+                    User user = new User(1, "Daniel", "Sørensen", "Talayuian", "Daniel.Sørensen@gma/il.com",0);
                 }
                 catch (Exception)
                 {
