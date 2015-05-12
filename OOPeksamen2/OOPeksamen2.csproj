@@ -90,6 +90,7 @@
     <None Include="packages.config" />
     <None Include="ressources\transactions.log" />
     <None Include="ressources\UserLog.csv" />
+    <None Include="StatusDoc.pdf" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
