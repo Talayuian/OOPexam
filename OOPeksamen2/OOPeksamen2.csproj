@@ -86,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ressources\eksamensopgave 2015 - stregsystem.pdf" />
     <None Include="ressources\products.csv" />
     <None Include="packages.config" />
     <None Include="ressources\transactions.log" />
