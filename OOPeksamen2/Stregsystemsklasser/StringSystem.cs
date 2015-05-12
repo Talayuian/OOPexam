@@ -118,12 +118,12 @@ namespace OOPeksamen2
         public void Logging(Transactions print)
         {//writes transactions to logfile
             string printline = print.ToString();
-            File.AppendAllText(("..\\..\\ressources\\transactions.log"), printline + Environment.NewLine, Encoding.UTF7);
+            File.AppendAllText(("..\\..\\ressources\\transactions.log"), printline + Environment.NewLine, Encoding.GetEncoding("iso-8859-1"));
         }
         public void logUsers(User user)
         {
             string printline = user.UserID +":"+user.FirstName+":"+user.LastName+":"+user.Username+":"+user.EMail+":"+user.Balance ;
-            File.AppendAllText(("..\\..\\ressources\\UserLog.csv"), printline + Environment.NewLine, Encoding.UTF7);
+            File.AppendAllText(("..\\..\\ressources\\UserLog.csv"), printline + Environment.NewLine, Encoding.GetEncoding("iso-8859-1"));
         }
         public User adduser(uint ID,string[] userInfo)
         {
