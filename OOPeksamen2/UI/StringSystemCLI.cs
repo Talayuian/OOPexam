@@ -58,7 +58,7 @@ namespace OOPeksamen2
             }
 
         }
-        //inspireret af Jonatan Groth Frausing SW2A412
+        //taken from menu assignment from course, and reminded about it by Jonatan groth frausing.
         public void writecolorline(ConsoleColor color, string message)
         {
             Console.ForegroundColor = color;
@@ -117,7 +117,7 @@ namespace OOPeksamen2
             Console.WriteLine("ID: [{0,6}]  Name: [{1,36}]  Price: [{2,6}kr.]", product.ProductID, product.ProductName, UintToDouble(product.Price));
         }
         //shows the user the multi-purchase the user just took
-        public void DisplayUserBuysProduct(int count, BuyTransaction transaction)
+        public void DisplayUserBuysProducts(int count, BuyTransaction transaction)
         {
             Console.WriteLine("Completed transaction: [{0}]  [{1}]times", transaction.ToString(), count);
         }

@@ -41,8 +41,12 @@ namespace OOPeksamen2
         public void BuyProduct(User user, uint productID)
         {
             Product product = GetProduct(productID);
-            BuyTransaction Purchase = new BuyTransaction((uint)Transactions.Count, user, product);
-            ExecuteTransaction(Purchase);
+            if (user.Balance > product.Price || product.CanBeBoughtOnCredit)
+            {
+                BuyTransaction Purchase = new BuyTransaction((uint)Transactions.Count, user, product);
+                ExecuteTransaction(Purchase);
+            }
+
         }
         //method to add credits to account
         public void AddCreditsToAccount(User user, int amount)

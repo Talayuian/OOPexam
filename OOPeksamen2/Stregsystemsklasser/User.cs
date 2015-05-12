@@ -66,9 +66,6 @@ namespace OOPeksamen2
         public int SubtractSaldo(int Beløb)
         {
             Balance -= Beløb;
-            if (Balance < 50){
-                throw new ArgumentOutOfRangeException();
-            }
             return Balance;
         }
         #endregion

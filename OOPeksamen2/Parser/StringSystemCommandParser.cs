@@ -103,10 +103,6 @@ namespace OOPeksamen2
             {
                 CLI.DisplayGeneralError(ex.Message);
             }
-            catch (NotActiveException ex)
-            {
-                CLI.DisplayGeneralError(ex.Message);
-            }
             catch (NoTransactionsFoundException ex)
             {
                 CLI.DisplayGeneralError(ex.Message);
@@ -129,6 +125,10 @@ namespace OOPeksamen2
                 CLI.DisplayAdminCommandNotFoundMessage(command);
             }
             catch (ArgumentNullException ex)
+            {
+                CLI.DisplayGeneralError(ex.Message);
+            }
+            catch (ArgumentException ex)
             {
                 CLI.DisplayGeneralError(ex.Message);
             }
