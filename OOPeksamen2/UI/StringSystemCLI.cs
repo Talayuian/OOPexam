@@ -27,7 +27,7 @@ namespace OOPeksamen2
                 DisplayActiveProducts();
                 input = Console.ReadLine();
                 parser.ParseCommand(input);
-                Console.WriteLine("press any key to reload screen and hide your informations:");
+                writecolorline(ConsoleColor.Cyan,"press any key to reload screen and hide your informations:");
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -41,7 +41,7 @@ namespace OOPeksamen2
         public void DisplayActiveProducts()
         {
             //formatting string to make a grid with data.
-            Console.WriteLine(string.Format("|{0,6}|{1,-36}|{2,8}|", "ID", "Product", "Price"));
+            writecolorline(ConsoleColor.Cyan,string.Format("|{0,6}|{1,-36}|{2,8}|", "ID", "Product", "Price"));
             List<Product> activeProductList = new List<Product>();
 
             //getting a list of all active products
@@ -57,6 +57,13 @@ namespace OOPeksamen2
                 }
             }
 
+        }
+        //inspireret af Jonatan Groth Frausing SW2A412
+        public void writecolorline(ConsoleColor color, string message)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
         public void DisplayEachProductLine(uint ID)
         {

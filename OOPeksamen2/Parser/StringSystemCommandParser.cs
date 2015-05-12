@@ -16,6 +16,7 @@ namespace OOPeksamen2
         {
             this.stringsystem = stringsystem;
             this.CLI = CLI;
+            //used actions 
             //admin commands for closing the program:
             admincmd.Add(":q", s => CLI.Close());
             admincmd.Add(":quit", s => CLI.Close());
