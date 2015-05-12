@@ -14,7 +14,7 @@ namespace OOPeksamen2
         // reading products from CSV file
         public Dictionary<uint, Product> Productreader()
         {
-            string[] ProductReadLine = File.ReadAllLines("..\\..\\ressources\\products.csv", Encoding.UTF7);
+            string[] ProductReadLine = File.ReadAllLines("../../ressources/products.csv", Encoding.UTF7);
             int StringLenTemp = ProductReadLine.Length;
             for (int i = 1; i < StringLenTemp; i++)
             {

@@ -20,7 +20,7 @@ namespace OOPeksamen2
         public StringSystem()
         {
             //check if products file exists
-            if (File.Exists("..\\..\\ressources\\products.csv"))
+            if (File.Exists("../../ressources/products.csv"))
             {
                 //calling products reader to get files from csv file
                 ProductsReader productreader = new ProductsReader();
@@ -28,13 +28,13 @@ namespace OOPeksamen2
                 Products = productreader.productsdic;
             }
             //check if users logfile is made
-            if (File.Exists("..\\..\\ressources\\UserLog.csv"))
+            if (File.Exists("../../ressources/UserLog.csv"))
             {
                 //add users from file
                 UserReader userreader = new UserReader();
                 userreader.Userreader();
                 Users = userreader.users;
-                File.Delete("..\\..\\ressources\\UserLog.csv");
+                File.Delete("../../ressources/UserLog.csv");
             }
         }
         //method to buy a product
@@ -118,12 +118,12 @@ namespace OOPeksamen2
         public void Logging(Transactions print)
         {//writes transactions to logfile
             string printline = print.ToString();
-            File.AppendAllText(("..\\..\\ressources\\transactions.log"), printline + Environment.NewLine, Encoding.GetEncoding("iso-8859-1"));
+            File.AppendAllText(("../../ressources/transactions.log"), printline + Environment.NewLine, Encoding.GetEncoding("iso-8859-1"));
         }
         public void logUsers(User user)
         {
             string printline = user.UserID +":"+user.FirstName+":"+user.LastName+":"+user.Username+":"+user.EMail+":"+user.Balance ;
-            File.AppendAllText(("..\\..\\ressources\\UserLog.csv"), printline + Environment.NewLine, Encoding.GetEncoding("iso-8859-1"));
+            File.AppendAllText(("../../ressources/UserLog.csv"), printline + Environment.NewLine, Encoding.GetEncoding("iso-8859-1"));
         }
         public User adduser(uint ID,string[] userInfo)
         {
